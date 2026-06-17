@@ -615,45 +615,67 @@ section {
 }
 .svc-price {
   font-family: var(--display);
-  font-size: 36px;
   font-weight: 600;
   letter-spacing: -0.03em;
   color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.svc-price .amount {
+  font-size: 36px;
+  line-height: 1;
 }
 .svc-price .per {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--ink-3);
   font-weight: 500;
-  margin-left: 4px;
+  letter-spacing: 0;
 }
 .svc-card.featured .svc-price .per { color: #B8C0BC; }
 .svc-desc { font-size: 14px; color: var(--ink-2); }
 .svc-features {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin: 6px 0 16px;
+  gap: 8px;
+  margin: 8px 0 18px;
 }
 .svc-feature {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: var(--ink-2);
+  font-weight: 500;
+  color: var(--ink);
 }
 .svc-feature .tick {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 999px;
-  background: var(--brand);
-  color: white;
+  background: var(--brand-soft);
+  color: var(--brand-deep);
   display: grid;
   place-items: center;
   font-size: 11px;
+  font-weight: 700;
   flex-shrink: 0;
+}
+.svc-card.featured .svc-feature .tick {
+  background: var(--brand);
+  color: var(--ink);
 }
 .svc-cta {
   margin-top: auto;
+}
+.price-pill {
+  display: inline-block;
+  background: var(--brand-soft);
+  color: var(--brand-deep);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0;
 }
 
 /* =========================================================
@@ -1468,12 +1490,12 @@ section {
       <article class="svc-card reveal">
         <div class="svc-icon">🚗</div>
         <div class="svc-name">Manual lessons</div>
-        <div class="svc-price">£54<span class="per">/1.5 hrs</span></div>
+        <div class="svc-price"><span class="amount">£54</span><span class="per">per 1.5-hour lesson</span></div>
         <p class="svc-desc">All manual lessons are 1.5 hours — enough time to really settle in and make progress each session.</p>
         <div class="svc-features">
           <div class="svc-feature"><span class="tick">✓</span> Door-to-door pickup</div>
           <div class="svc-feature"><span class="tick">✓</span> Dual-controlled car</div>
-          <div class="svc-feature"><span class="tick">✓</span> Personal lesson plan</div>
+          <div class="svc-feature"><span class="tick">✓</span> Personalised lesson plan</div>
         </div>
         <a href="#book" class="btn btn-ghost svc-cta">Book this →</a>
       </article>
@@ -1482,12 +1504,12 @@ section {
         <span class="svc-badge">Best value</span>
         <div class="svc-icon">📦</div>
         <div class="svc-name">Manual 6-hour block</div>
-        <div class="svc-price">£210<span class="per">/6 hrs</span></div>
-        <p class="svc-desc">Save vs. paying lesson-by-lesson. Four 1.5-hour sessions — great for steady, consistent progress.</p>
+        <div class="svc-price"><span class="amount">£210</span><span class="per">6 hours · 4 sessions</span></div>
+        <p class="svc-desc">Four 1.5-hour sessions — great for steady, consistent progress without the commitment of a full course.</p>
         <div class="svc-features">
-          <div class="svc-feature"><span class="tick">✓</span> £35/hr effective rate</div>
+          <div class="svc-feature"><span class="tick">✓</span> Door-to-door pickup</div>
           <div class="svc-feature"><span class="tick">✓</span> Flexible scheduling</div>
-          <div class="svc-feature"><span class="tick">✓</span> We'll put you in for test when ready</div>
+          <div class="svc-feature"><span class="tick">✓</span> Test when you're ready</div>
         </div>
         <a href="#book" class="btn btn-primary svc-cta">Book this →</a>
       </article>
@@ -1495,12 +1517,12 @@ section {
       <article class="svc-card reveal">
         <div class="svc-icon">⚡</div>
         <div class="svc-name">Automatic lessons</div>
-        <div class="svc-price">£45<span class="per">/1 hr</span> <span style="color:var(--ink-3);font-size:16px;">· £60/1.5 hrs</span></div>
+        <div class="svc-price"><span class="amount">£45<span style="font-size:22px;font-weight:500;"> / £60</span></span><span class="per">1-hour · or 1.5-hour session</span></div>
         <p class="svc-desc">Skip the gears. Great for nervous learners or those short on time. Choose 1-hour or 1.5-hour sessions.</p>
         <div class="svc-features">
-          <div class="svc-feature"><span class="tick">✓</span> Easier first experience</div>
-          <div class="svc-feature"><span class="tick">✓</span> Faster route to test</div>
-          <div class="svc-feature"><span class="tick">✓</span> Block packages available</div>
+          <div class="svc-feature"><span class="tick">✓</span> No gears to worry about</div>
+          <div class="svc-feature"><span class="tick">✓</span> Dual-controlled automatic car</div>
+          <div class="svc-feature"><span class="tick">✓</span> Flexible session length</div>
         </div>
         <a href="#book" class="btn btn-ghost svc-cta">Book this →</a>
       </article>
@@ -1508,12 +1530,12 @@ section {
       <article class="svc-card reveal">
         <div class="svc-icon">📦</div>
         <div class="svc-name">Automatic 6-hour block</div>
-        <div class="svc-price">£230<span class="per">/6 hrs</span></div>
-        <p class="svc-desc">Commit to a block and save. Ideal for learners who want to make fast, consistent progress in an automatic.</p>
+        <div class="svc-price"><span class="amount">£230</span><span class="per">6 hours · 4 sessions</span></div>
+        <p class="svc-desc">Four sessions to build real confidence. Ideal for learners who want fast, consistent progress in an automatic.</p>
         <div class="svc-features">
-          <div class="svc-feature"><span class="tick">✓</span> Flexible scheduling</div>
           <div class="svc-feature"><span class="tick">✓</span> Dual-controlled automatic car</div>
-          <div class="svc-feature"><span class="tick">✓</span> We'll put you in for test when ready</div>
+          <div class="svc-feature"><span class="tick">✓</span> Flexible scheduling</div>
+          <div class="svc-feature"><span class="tick">✓</span> Test when you're ready</div>
         </div>
         <a href="#book" class="btn btn-ghost svc-cta">Book this →</a>
       </article>
@@ -1521,11 +1543,11 @@ section {
       <article class="svc-card reveal">
         <div class="svc-icon">🔁</div>
         <div class="svc-name">Refresher lessons</div>
-        <div class="svc-price">From £45<span class="per">/session</span></div>
-        <p class="svc-desc">Back behind the wheel after a break. Manual or automatic — same prices as our standard lessons.</p>
+        <div class="svc-price"><span class="amount">From £45</span><span class="per">per session</span></div>
+        <p class="svc-desc">Back behind the wheel after a break. Manual or automatic — confidence rebuilt at your own pace.</p>
         <div class="svc-features">
-          <div class="svc-feature"><span class="tick">✓</span> Manual: £54/1.5 hrs</div>
-          <div class="svc-feature"><span class="tick">✓</span> Automatic: £45/1 hr · £60/1.5 hrs</div>
+          <div class="svc-feature"><span class="tick">✓</span> Manual or automatic</div>
+          <div class="svc-feature"><span class="tick">✓</span> Flexible session lengths</div>
           <div class="svc-feature"><span class="tick">✓</span> Tailored to your weak spots</div>
         </div>
         <a href="#book" class="btn btn-ghost svc-cta">Book this →</a>
@@ -1708,11 +1730,11 @@ section {
           </div>
           <div><div class="lbl">WhatsApp</div><div class="val">Message us instantly</div></div>
         </a>
-        <a href="mailto:hello@learnandpassgrimsby.co.uk" class="contact-row">
+        <a href="mailto:hello@learnandpassgrimsby.com" class="contact-row">
           <div class="ic mail">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <div><div class="lbl">Email</div><div class="val">hello@learnandpassgrimsby.co.uk</div></div>
+          <div><div class="lbl">Email</div><div class="val">hello@learnandpassgrimsby.com</div></div>
         </a>
         <a href="https://www.facebook.com/LearnAndPassDriving" class="contact-row" target="_blank" rel="noopener">
           <div class="ic" style="background:#1877F2;">
@@ -1766,7 +1788,7 @@ section {
       <h5>Contact</h5>
       <a href="tel:+447545424624">07545 424624</a>
       <a href="https://wa.me/447545424624">WhatsApp</a>
-      <a href="mailto:hello@learnandpassgrimsby.co.uk">Email</a>
+      <a href="mailto:hello@learnandpassgrimsby.com">Email</a>
       <a href="https://www.facebook.com/LearnAndPassDriving" target="_blank" rel="noopener">Facebook</a>
     </div>
   </div>
