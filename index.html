@@ -913,7 +913,6 @@ section {
 .book-side {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 24px;
 }
 .contact-list {
@@ -1036,6 +1035,7 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+.choice-grid .choice:nth-child(odd):last-child { grid-column: 1 / -1; }
 .choice {
   border: 1.5px solid var(--line-2);
   border-radius: 16px;
@@ -1335,6 +1335,16 @@ section {
 
   /* Footer logo block spans full width on tablet */
   .footer-logo { grid-column: 1 / -1; }
+
+  /* George CTA buttons — stack on mobile */
+  .about-btns { flex-direction: column; }
+  .about-btns .btn { width: 100%; justify-content: center; text-align: center; }
+
+  /* Form nav — Continue fills remaining space for easy tapping */
+  .form-nav .btn-primary { flex: 1; justify-content: center; }
+
+  /* Services — See all options ghost btn fills width */
+  .services .section-head .btn-ghost { width: 100%; justify-content: center; }
 }
 
 @media (max-width: 420px) {
@@ -1787,7 +1797,7 @@ section {
         <li><span class="tick">★</span><span><strong>Patient with nervous learners.</strong> Plenty of teens, adult returners and anxious drivers have passed with me.</span></li>
         <li><span class="tick">★</span><span><strong>Honest, no-pressure approach.</strong> I'll only put you in for test when you're ready — never to make a quick sale.</span></li>
       </ul>
-      <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;">
+      <div class="about-btns" style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;">
         <a href="#book" class="btn btn-brand">Book a lesson with me</a>
         <a href="tel:+447545424624" class="btn btn-ghost">Have a quick chat</a>
       </div>
@@ -1916,7 +1926,7 @@ section {
 
   function stepValid() {
     if (step === 0) return data.type && data.learnerStatus;
-    if (step === 1) return data.name && data.phone && data.postcode;
+    if (step === 1) return data.name && /^[\d\s\+\(\)\-]{10,}$/.test(data.phone.trim()) && data.postcode;
     if (step === 2) return data.availability;
     return true;
   }
@@ -2023,10 +2033,10 @@ section {
     });
 
     const backEl = root.querySelector('#btn-back');
-    if (backEl) backEl.addEventListener('click', () => { step--; render(); });
+    if (backEl) backEl.addEventListener('click', () => { step--; render(); root.scrollIntoView({behavior:'smooth',block:'start'}); });
 
     const nextEl = root.querySelector('#btn-next');
-    if (nextEl) nextEl.addEventListener('click', () => { if (stepValid()) { step++; render(); } });
+    if (nextEl) nextEl.addEventListener('click', () => { if (stepValid()) { step++; render(); root.scrollIntoView({behavior:'smooth',block:'start'}); } });
 
     const submitEl = root.querySelector('#btn-submit');
     if (submitEl) submitEl.addEventListener('click', () => {
