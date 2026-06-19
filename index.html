@@ -1926,7 +1926,7 @@ section {
 
   function stepValid() {
     if (step === 0) return data.type && data.learnerStatus;
-    if (step === 1) return data.name && /^[\d\s\+\(\)\-]{10,}$/.test(data.phone.trim()) && data.postcode;
+    if (step === 1) return data.name && /^[\d\s\+\(\)\-]{11,}$/.test(data.phone.trim()) && data.postcode;
     if (step === 2) return data.availability;
     return true;
   }
